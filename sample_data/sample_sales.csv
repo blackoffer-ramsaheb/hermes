@@ -1,0 +1,31 @@
+transaction_id,date,department,product,category,units_sold,unit_price,revenue,cost,profit,customer_region,payment_method
+TXN1001,2024-01-05,Electronics,Wireless Headphones,Audio,15,89.99,1349.85,750.00,599.85,North America,Credit Card
+TXN1002,2024-01-07,Clothing,Running Shoes,Footwear,25,120.00,3000.00,1500.00,1500.00,Europe,PayPal
+TXN1003,2024-01-10,Home & Kitchen,Espresso Machine,Appliances,8,299.50,2396.00,1600.00,796.00,North America,Credit Card
+TXN1004,2024-01-12,Electronics,Smart Watch,Wearables,30,199.00,5970.00,3600.00,2370.00,Asia,Debit Card
+TXN1005,2024-01-15,Books,Data Science Handbook,Education,50,45.00,2250.00,1000.00,1250.00,Europe,Credit Card
+TXN1006,2024-01-18,Clothing,Winter Jacket,Apparel,12,180.00,2160.00,1080.00,1080.00,North America,PayPal
+TXN1007,2024-01-20,Home & Kitchen,Air Fryer,Appliances,20,110.00,2200.00,1300.00,900.00,Latin America,Credit Card
+TXN1008,2024-01-25,Electronics,Bluetooth Speaker,Audio,40,49.99,1999.60,1000.00,999.60,Asia,Credit Card
+TXN1009,2024-01-28,Sports,Yoga Mat,Fitness,35,30.00,1050.00,420.00,630.00,North America,Debit Card
+TXN1010,2024-02-02,Electronics,Noise Cancelling Earbuds,Audio,22,149.00,3278.00,1760.00,1518.00,Europe,Credit Card
+TXN1011,2024-02-05,Clothing,Denim Jeans,Apparel,45,65.00,2925.00,1350.00,1575.00,North America,PayPal
+TXN1012,2024-02-09,Home & Kitchen,Blender Set,Appliances,18,75.50,1359.00,720.00,639.00,Asia,Credit Card
+TXN1013,2024-02-14,Electronics,4K Monitor,Displays,10,350.00,3500.00,2300.00,1200.00,North America,Credit Card
+TXN1014,2024-02-18,Sports,Adjustable Dumbbells,Fitness,14,220.00,3080.00,1820.00,1260.00,Europe,Credit Card
+TXN1015,2024-02-22,Books,Machine Learning Guide,Education,60,55.00,3300.00,1500.00,1800.00,Asia,Debit Card
+TXN1016,2024-02-26,Clothing,Casual Hoodie,Apparel,28,50.00,1400.00,700.00,700.00,Latin America,PayPal
+TXN1017,2024-03-01,Home & Kitchen,Robot Vacuum,Appliances,7,450.00,3150.00,2100.00,1050.00,North America,Credit Card
+TXN1018,2024-03-05,Electronics,Mechanical Keyboard,Peripherals,32,110.00,3520.00,1920.00,1600.00,Europe,Credit Card
+TXN1019,2024-03-10,Sports,Treadmill Foldable,Fitness,4,799.00,3196.00,2200.00,996.00,North America,Credit Card
+TXN1020,2024-03-15,Electronics,Gaming Mouse,Peripherals,55,60.00,3300.00,1650.00,1650.00,Asia,Debit Card
+TXN1021,2024-03-20,Clothing,Hiking Boots,Footwear,16,140.00,2240.00,1120.00,1120.00,Europe,PayPal
+TXN1022,2024-03-25,Books,Cloud Architecture,Education,42,65.00,2730.00,1260.00,1470.00,North America,Credit Card
+TXN1023,2024-04-02,Home & Kitchen,Toaster 4-Slice,Appliances,24,45.00,1080.00,600.00,480.00,Latin America,Credit Card
+TXN1024,2024-04-08,Electronics,Tablet 10-inch,Computers,15,320.00,4800.00,3000.00,1800.00,North America,Credit Card
+TXN1025,2024-04-12,Sports,Camping Tent,Outdoor,9,190.00,1710.00,990.00,720.00,Europe,Debit Card
+TXN1026,2024-04-17,Clothing,Silk Dress,Apparel,18,130.00,2340.00,900.00,1440.00,Asia,PayPal
+TXN1027,2024-04-22,Electronics,External SSD 1TB,Storage,38,105.00,3990.00,2280.00,1710.00,North America,Credit Card
+TXN1028,2024-04-27,Home & Kitchen,Cookware Set,Kitchen,11,250.00,2750.00,1650.00,1100.00,Europe,Credit Card
+TXN1029,2024-05-03,Books,Python for Analysts,Education,65,40.00,2600.00,1170.00,1430.00,North America,Debit Card
+TXN1030,2024-05-09,Sports,Mountain Bicycle,Cycling,5,550.00,2750.00,1750.00,1000.00,Latin America,Credit Card

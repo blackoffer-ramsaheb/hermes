@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes — Local AI Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-icon">🏛️</div>
+        <div>
+          <h1>Hermes</h1>
+          <p class="tagline">Local AI Data Analyst</p>
+        </div>
+      </div>
+      <div class="header-status">
+        <div id="llmStatusBadge" class="status-badge status-warning">
+          <span class="dot"></span> <span id="llmStatusText">Checking LLM...</span>
+        </div>
+        <div id="datasetStatusBadge" class="status-badge status-offline">
+          <span class="dot"></span> <span id="datasetStatusText">No Dataset Loaded</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-layout">
+      <!-- Left Column: Data Ingestion & Overview -->
+      <section class="left-panel">
+        
+        <!-- Upload Card -->
+        <div class="card upload-card">
+          <div class="card-header">
+            <h2>📁 1. Dataset Ingestion</h2>
+          </div>
+          <div class="card-body">
+            <div id="dropZone" class="drop-zone">
+              <div class="drop-icon">📤</div>
+              <p class="drop-title">Drag & drop CSV or Excel file here</p>
+              <p class="drop-sub">Supported formats: <code>.csv</code>, <code>.xlsx</code>, <code>.xls</code></p>
+              <input type="file" id="fileInput" accept=".csv, .xlsx, .xls" hidden>
+              <button id="browseBtn" class="btn btn-secondary">Browse File</button>
+            </div>
+            <div class="upload-divider">
+              <span>OR</span>
+            </div>
+            <button id="sampleDataBtn" class="btn btn-outline full-width">
+              ⚡ Load Sample Sales Dataset
+            </button>
+          </div>
+        </div>
+
+        <!-- Dataset Summary Card -->
+        <div id="datasetOverviewCard" class="card overview-card hidden">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>📊 Dataset Overview</h2>
+              <span id="activeFilename" class="file-tag">sample_sales.csv</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="stats-grid">
+              <div class="stat-box">
+                <span class="stat-label">Total Rows</span>
+                <span id="statRows" class="stat-value">0</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">Total Columns</span>
+                <span id="statCols" class="stat-value">0</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">Missing Values</span>
+                <span id="statMissing" class="stat-value">0</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">File Size</span>
+                <span id="statSize" class="stat-value">0 KB</span>
+              </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="tab-nav">
+              <button class="tab-btn active" data-tab="tabColumns">Columns & Schema</button>
+              <button class="tab-btn" data-tab="tabPreview">Data Preview</button>
+              <button class="tab-btn" data-tab="tabNumeric">Stats Summary</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tabColumns" class="tab-content active">
+              <div class="table-container small-table">
+                <table id="columnsTable">
+                  <thead>
+                    <tr>
+                      <th>Column</th>
+                      <th>Type</th>
+                      <th>Nulls</th>
+                      <th>Sample</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="tabPreview" class="tab-content">
+              <div class="table-container small-table">
+                <table id="previewTable">
+                  <thead></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="tabNumeric" class="tab-content">
+              <div class="table-container small-table">
+                <table id="statsTable">
+                  <thead></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right Column: Analysis, Chat, Results, Visualizations -->
+      <section class="right-panel">
+        
+        <!-- Query Card -->
+        <div class="card query-card">
+          <div class="card-header">
+            <h2>💬 2. Natural Language Analysis</h2>
+          </div>
+          <div class="card-body">
+            <!-- Sample Prompt Chips -->
+            <div class="prompt-chips">
+              <span class="chips-label">Try asking:</span>
+              <button class="chip">Which department has the highest revenue?</button>
+              <button class="chip">Show me a bar chart of revenue by department</button>
+              <button class="chip">What is the average unit price and profit?</button>
+              <button class="chip">Show the monthly sales trend</button>
+              <button class="chip">Are there any missing values?</button>
+              <button class="chip">Which product generated the most revenue?</button>
+            </div>
+
+            <!-- Input Box -->
+            <form id="queryForm" class="query-form">
+              <div class="input-wrapper">
+                <textarea 
+                  id="questionInput" 
+                  rows="2" 
+                  placeholder="Ask a question about your data (e.g. 'Show total revenue by department as a bar chart')..."
+                  required
+                ></textarea>
+                <button type="submit" id="askBtn" class="btn btn-primary">
+                  <span class="btn-text">Ask Hermes</span>
+                  <span class="spinner hidden"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Output / Results Feed -->
+        <div id="resultsFeed" class="results-feed">
+          <!-- Initial Welcome Empty State -->
+          <div id="welcomeState" class="empty-state">
+            <div class="empty-icon">💡</div>
+            <h3>Ready to Analyze Your Data</h3>
+            <p>Upload a CSV/Excel file or load the sample sales dataset on the left, then ask any analytical or visualization question above.</p>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
